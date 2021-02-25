@@ -28,7 +28,7 @@ export const PokemonsList = () => {
         return () => {
             dispatch(resetNumPage());
         }
-    }, [])
+    }, [dispatch])
 
     const handleNext = async () => {
         dispatch(getListPokemonsQuery(nextUrl));

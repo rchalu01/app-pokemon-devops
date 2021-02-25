@@ -1,4 +1,3 @@
-import {PokemonsList} from "./PokemonsList";
 import {PokemonDetails} from "./PokemonDetails";
 import React from "react";
 import {PokemonsListTypes} from "./PokemonsListTypes";

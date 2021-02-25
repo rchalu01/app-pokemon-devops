@@ -10,8 +10,8 @@ export const PokemonRandom = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getPokemonById());
-    }, [])
+        dispatch(getPokemonById()).then();
+    }, [dispatch])
 
     let renderedPokemon = <div>Aucun résultat</div>;
 

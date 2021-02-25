@@ -10,7 +10,7 @@ export const DetailsPokemonComponent = ({pokemon}) => {
 
     return (
         <div className={'card'}>
-            <img style={{width: '20%', height: '20%'}} src={pokemon.sprites.front_default}/>
+            <img style={{width: '20%', height: '20%'}} src={pokemon.sprites.front_default} alt={'imgPoke'}/>
             <h2>{pokemon.name}</h2>
             <h4>Types : </h4>
             {types}
