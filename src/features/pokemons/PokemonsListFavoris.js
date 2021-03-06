@@ -72,10 +72,13 @@ export const PokemonsListFavoris = () => {
                     <>
                         {list.map(item => {
                             return (
-                                <div>
-                                    <span onClick={() => handleDetailsPokemon(item.url)}>{item.name}</span>
-                                    <span onClick={() => handleDeleteFavoris(item)}>Supprimer des favoris</span>
-                                </div>
+                                <li className={"list-group-item"} key={item.name}>
+                                    <div className={"row"}>
+                                        <p className={"col"}
+                                           onClick={() => handleDetailsPokemon(item.url)}>{item.name}</p>
+                                        <span onClick={() => handleDeleteFavoris(item)}>Supprimer des favoris</span>
+                                    </div>
+                                </li>
                             );
                         })}
                     </>

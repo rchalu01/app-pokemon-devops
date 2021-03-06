@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {
-    types, type, getType, getPokemonByUrl
+    types, type, getType, getPokemonByUrl, addPokemonFavoris
 } from "./PokemonsSlice"
 import {PaginatedList} from "react-paginated-list";
 
@@ -28,20 +28,23 @@ export const PokemonsListTypes = () => {
         dispatch(getPokemonByUrl({urlPokemon: url}));
     }
 
+    const handleAjoutFavoris = async (pokemon) => {
+        dispatch(addPokemonFavoris({pokemon: pokemon}));
+    }
+
     const listTypesPokemons = typesPokemons.map(type => (
-        <div>
-            <li className={"list-group-item"} key={type} onClick={() => handleType(type)}>
-                <div className={"row"}>
-                    <p className={"col"}>{type}</p>
-                </div>
-            </li>
-        </div>
+        <p className={"col list-group-item list-group-item-action"} key={type}
+           onClick={() => handleType(type)}>{type}</p>
     ));
 
     return (
         <div>
             <h2>types</h2>
-            {listTypesPokemons}
+            <div className={"container list-group"}>
+                <div className={"row"}>
+                    {listTypesPokemons}
+                </div>
+            </div>
             <h2>liste paginée</h2>
             <PaginatedList
                 list={pokemons}
@@ -50,10 +53,13 @@ export const PokemonsListTypes = () => {
                     <>
                         {list.map(item => {
                             return (
-                                <div>
-                                    <span
-                                        onClick={() => handleDetailsPokemon(item.pokemon.url)}>{item.pokemon.name}</span>
-                                </div>
+                                <li className={"list-group-item"} key={item.pokemon.name}>
+                                    <div className={"row"}>
+                                        <p className={"col"}
+                                           onClick={() => handleDetailsPokemon(item.pokemon.url)}>{item.pokemon.name}</p>
+                                        <span onClick={() => handleAjoutFavoris(item.pokemon)}>Ajouter au favoris</span>
+                                    </div>
+                                </li>
                             );
                         })}
                     </>
